@@ -1,0 +1,256 @@
+*{
+    margin: 0px;
+    text-decoration: none;
+
+}
+
+button{
+    color: white;
+    letter-spacing: 1px;
+    border: unset;
+    background-color: rgb(29, 29, 29);
+    transition-duration: .3s;
+    padding: 5px;
+    min-width: 120px;
+    min-height: 50px;
+    font-size: 15px;
+    border-radius: 200px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.349);
+    margin: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+ 
+    overflow: hidden;
+    font-weight: 400;
+    font-family: inherit;
+ 
+}
+button:focus{
+    outline: none;
+}
+button:hover{
+    background-color: rgb(60, 60, 60); 
+    transition-duration: .3s;
+    cursor: pointer;
+}
+button:active{
+   transform: translate3d(0px,4px,0px);
+}
+
+.invert{
+    background: rgb(245, 245, 245);
+    color: rgb(29, 29, 29);
+
+}
+button.invert:hover{
+    background: rgb(214, 214, 214);
+
+}
+.flat, .corners, .brackets{
+    box-shadow: none;
+    
+}
+i{
+    line-height: inherit;
+}
+
+.gradient, .gradient-2{
+    background-image: linear-gradient(45deg ,rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgb(255, 53, 80) 100%);
+    background-size: 200% auto;
+    transition-duration: .3s;
+}
+.gradient-2{
+    background-image: linear-gradient(45deg , #84fab0 0%, #6dceff 51%, #fff456 100%);
+}
+
+button.gradient:hover, button.gradient-2:hover{
+    background-position: right ;
+    transition-duration: .3s;
+}
+.text-gradient{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+button.text-gradient:after{
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(29, 29, 29);
+    content:"";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+    z-index: -1;
+}
+button.text-gradient:active{
+transform: none;
+
+}
+.red{
+    background-color: rgb(255, 0, 21);
+}
+button.red:hover{
+    background-color: rgb(224, 1, 21);
+}
+.glow{
+    box-shadow: 0px 0px 6px 0px rgba(0,255,255,.6);
+    text-shadow: 0px 0 5px rgb(0,255,255);
+}
+button.glow:hover{
+    box-shadow: 0px 0px 12px -2px rgb(0,255,255);
+    text-shadow: 0px 0 10px 2px rgb(0,255,255);
+    background-color: rgba(43, 128, 128, 0.63);
+}
+.disabled{
+    background: lightgray;
+    color: gray;
+}
+.disabled:hover{
+    cursor: not-allowed;
+    background: lightgray;
+}
+.disabled:active{
+    transform: translate3d(0px,0px,0px);
+}
+.corners{
+    background: none;
+    color: rgb(29, 29, 29);
+    border-radius: 0px;
+}
+.corners span{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.corners:before, .corners:after, .corners span:before, .corners span:after{
+    transition: all 0.3s ease;
+    position: absolute;
+   background-color: rgb(29, 29, 29);
+   content: "";
+}
+.corners:before{
+    left: 6px;
+    bottom: 4px;
+    height: 20px;
+    width: 2px;
+}
+.corners:after{
+    left: 6px;
+    bottom: 4px;
+    width: 20px;
+    height: 2px;
+}
+.corners span:before{
+    right: 6px;
+    top: 4px;
+    height: 20px;
+    width: 2px;
+}
+.corners span:after{ 
+    right: 6px;
+    top: 4px;
+    height: 2px;
+    width: 20px;
+}
+button.corners:hover {
+    background: rgba(27, 255, 57, 0.178);
+}
+.corners:hover:before {
+  transform: translate3d(-3px,3px,0px);
+  height: 25px;
+}
+.corners:hover:after{
+    transform: translate3d(-3px,3px,0px);
+    width: 25px;
+}
+.corners:hover  span:before{
+    transform: translate3d(3px,-3px,0px);
+  height: 25px;
+}
+.corners:hover  span:after{
+    transform: translate3d(3px,-3px,0px);
+  width:  25px;
+}
+.brackets{
+    background: none;
+    color: rgb(29, 29, 29);
+    border-radius: 0px;
+}
+button.brackets:hover {
+    background: rgba(27, 255, 57, 0.178);
+}
+.br-1,.br-2{
+    position: absolute;
+    background: rgb(29, 29, 29);
+    width: 2px;
+    height: 80%;
+    top: 10%;
+    transition: all 0.3s ease;
+}
+.br-1{
+    left: 5px;
+}
+.br-1:before, .br-1:after, .br-2:after, .br-2:before{
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background: rgb(29, 29, 29);
+    content: "";
+    transition: all 0.3s ease;
+
+}
+.br-1:before, .br-2:before{
+    top: 0;
+}
+.br-1:before, .br-1::after{
+    left: 0px;
+}
+.br-1:after, .br-2:after{
+    bottom: 0;
+}
+.br-2{
+    right: 5px;
+}
+.br-2:before,.br-2:after{  
+    right: 0px;
+}
+button.brackets:hover .br-1{
+    transform: translate3d(-5px,0px,0px);
+    height: 100%;
+    top: 0%;
+
+}
+button.brackets:hover .br-2{
+    transform: translate3d(5px,0px,0px);
+    height: 100%;
+    top: 0%;
+}
+button.ripple:hover{
+    background-color: rgb(43, 43, 43); 
+}
+.ripple{
+ overflow: hidden;
+position: relative;
+}
+
+.pulser{
+    position: absolute;
+    animation-name: pulsing;
+    animation-duration: 1s;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.404);
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+@keyframes pulsing {
+    0%  {transform: scale(0);}
+    60% {opacity: 1;}
+    80% {transform: scale(10);}
+    100%{opacity: 0;}
+  }
+
