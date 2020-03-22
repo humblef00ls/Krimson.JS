@@ -1,5 +1,22 @@
+
+    setVariable('--btn-travel','10px');
 $(document).ready(function(){
-    $('.brackets').append(" <span class='br-1'></span><span class='br-2'></span>");
+    
+    $('Button.brackets').each(function(){
+        
+        if($(this).parent().prop("tagName")!=$('pre').prop("tagName"))
+        $(this).append("<span class='br-1'></span><span class='br-2'></span>");
+    });
+    
+    $('Button.corners').each(function(){
+        if($(this).parent().prop("tagName")!=$('pre').prop("tagName"))
+        $(this).append("<span></span>");
+    });
+
+       
+    
+  
+    
 });
 var $pulsecount = 0;
 $('.ripple').click(function(e){
@@ -13,3 +30,9 @@ $('.ripple').click(function(e){
     },40000);
     $pulsecount++;
 });
+
+function setVariable(varname, newValue){
+    document.body.style.setProperty(varname, newValue);
+}
+
+
