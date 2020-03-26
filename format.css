@@ -58,7 +58,6 @@ h1, h2, h3 {
     color: white;
 }
 .krimson{
-   
     font-size: 1.5em;
     letter-spacing: 1.2vw;
     background: linear-gradient(135deg, #e712cb, #ff0040);
@@ -73,7 +72,14 @@ background-position:100% 100%
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-
+.mortingarage{
+    background: linear-gradient(135deg, #e712cb, #ff0040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+background-size: 400% 200%;
+background-position:100% 100%;
+animation: soothing .5s ease-in-out 0s ;
+}
 
 .Hcontainer{
     color: white;
@@ -107,6 +113,9 @@ background-position:100% 100%
         width: 160px;
         font-size:16px;
         height: 45px;
+    }
+    .tabs-option{
+        font-size: .9em;
     }
   }
   @media only screen and (max-height: 530px) {
@@ -229,7 +238,7 @@ background-position:100% 100%
     background: hsl(240, 100%, 70%)
 }
 #d:hover{
-    color: hsl(65, 100%, 50%);
+    color: hsl(55, 100%, 50%);
     background-color:  hsla(55, 100%, 50%,.05);
   }
   #d::before ,#d::after{
@@ -282,10 +291,10 @@ background-position:100% 100%
     transition-duration: 1s;
 }
 #larrow{
-    transform: rotate(45deg) translate3d(-7px,0,0);
+    transform: rotate(45deg) translate3d(-10px,0,0);
 }
 #rarrow{
-    transform: rotate(-45deg) translate3d(7px,0,0);
+    transform: rotate(-45deg) translate3d(10px,0,0);
 }
 .Page h1{
     font-weight: 300;
@@ -304,16 +313,17 @@ background-position:100% 100%
     font-size: 1.7em;
     
 }
-.Page p{
+.Page p, .windex{
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
     padding-left: 20px;
     padding-right: 20px;
     letter-spacing: 2px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 100;
   
 }
+
 .componentsdisp {
     padding: 40px;
     padding-top: 0px;
@@ -330,12 +340,11 @@ background-position:100% 100%
 
 
 }
-#Components h1{
+#Components h1, #Buttons h1, #Tabs h1{
     border-bottom: 4px hsl(240, 100%, 70%) solid;
 }
-#Buttons h1{
-    border-bottom: 4px hsl(120, 77%, 45%) solid;
-}
+
+
 #Start h1{
     border-bottom: 4px hsl(300, 100%, 60%) solid;
 }
@@ -379,7 +388,7 @@ text-align: center;
 .code{
     grid-column: 2;
     background:  hsla(0, 0%, 100%, 0.11);
-
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -397,23 +406,23 @@ text-align: center;
 .componentsdisp a:hover {
     transform: scale(1.09);
 }
- pre{
-    background: rgba(0, 0, 0, 0.336);
+ pre, code{
+    background: rgb(25, 25, 25);
     font-size: 13px;
     padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     line-height: 20px;
     border-radius: 10px;
-    margin: 15px;
+  margin: 5px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
     display: inline-block;
+    overflow-x: auto;
+    max-width: calc(100% - 50px);
 }
 code{
-    background: rgba(0, 0, 0, 0.336);
-    font-size: 13px;
-    padding: 10px;
-    line-height: 20px;
-    border-radius: 10px;
-    margin: 5px;
-    display: inline-block;
+    overflow-x: unset;
 }
 .descp{
     padding: 20px;
@@ -431,8 +440,8 @@ code{
     #nav{
 
     position: absolute;
-    transform: translate3d(0,calc(100% - 30px),0);
-    grid-auto-rows: 30px minmax(80px, 12vh) minmax(60px, 9vh) minmax(60px, 9vh) minmax(60px, 9vh) minmax(60px, 9vh) 1fr;
+    transform: translate3d(0,calc(100% - 40px),0);
+    grid-auto-rows: 40px minmax(80px, 12vh) minmax(60px, 9vh) minmax(60px, 9vh) minmax(60px, 9vh) minmax(60px, 9vh) 1fr;
     transition-duration: 1s;
     transition-timing-function: ease-in-out
     }
@@ -446,7 +455,7 @@ code{
         text-align: center
     }
     .Page p:last-of-type{
-        padding-bottom: 45px;
+        padding-bottom: 55px;
     }
     #Buttons .componentsdisp{
         padding-bottom: 50px; 
@@ -483,4 +492,91 @@ code{
   p code{
         margin: 3px; 
   }
-  
+  .mortingarage{
+    background: linear-gradient(135deg, #e712cb, #ff0040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+background-size: 400% 200%;
+background-position:100% 100%;
+animation: soothing 5s ease-in-out 0s infinite ;
+position: relative;
+
+}
+.mortingarage:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+background: rgb(0, 0, 0);
+z-index: -1;
+}
+.dwnlnk{
+padding: 10px;
+text-align: center;
+background: #e712cb;
+transition-duration: .5s;
+}
+.dwnlnkz{
+    display: grid;
+gap: 10px;
+padding-left: 10px;
+padding-right: 10px;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr 1fr 1fr;
+}
+.dwnlnk:active{
+    background: #ff0040;
+}
+.dwnlnk:hover{
+    cursor: pointer;
+}
+.italica{
+    font-style: italic;
+}
+.fab{
+    font-size: 1.3em;
+}
+.fas{
+    font-size: 1.5em;
+}
+.fa-js-square{
+    color: hsl(212, 100%, 60%);
+    font-size: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+div.windex > code{
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 2px;
+    line-height: unset;
+}
+
+.j-elem{
+    
+}
+#installer{  
+    --tabs-highlight: 255, 50, 255;
+}
+
+#sometab2{
+    --ripple-color: rgba(0, 205, 150, 0.2);
+    --ripple-size: 15;
+    --tabs-highlight : 100, 205, 150;
+    --tabs-rail-display : none;
+}
+.fadeaway{
+    opacity: 1;
+    animation-name: signalbeam ;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(9.175, 0.885, 0.32, 1.275)
+}
+@keyframes signalbeam { 
+    0%{opacity: 1;}
+
+    100%{
+ 
+    opacity: 0;}
+}

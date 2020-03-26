@@ -4,15 +4,25 @@
 
 }
 
-body{
+:root{
     --ripple-size: 10;
+    --ripple-color: rgba(255, 255, 255, 0.5);
     --bracket-color : rgb(255,255,255);
     --corner-color : rgb(255,255,255);
     --transparent-btn-bg: rgba(27, 255, 57, 0.178);
     --btn-travel : 4px;
+    --scroll-color : rgba(255, 0, 72, 0.9);
+    --tabs-highlight : 255, 109, 121;
+    --tabs-min-width : 100px;
+    --tabs-rail-display : block;
   }
 
-  
+  .center{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
   ::-webkit-scrollbar {
     width: 3px;
     height: 3px;
@@ -26,7 +36,7 @@ body{
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: rgb(255, 0, 71);
+    background: var(--scroll-color);
   }
   
   /* Handle on hover */
@@ -65,6 +75,7 @@ button:hover{
     cursor: pointer;
 }
 
+
 button:active{
    transform: translate3d(0px,var(--btn-travel),0px);
 }
@@ -73,6 +84,17 @@ button:active{
     background: rgb(245, 245, 245);
     color: rgb(29, 29, 29);
 
+}
+.outline{
+    box-sizing: border-box;
+    border: white 3px solid;
+    color: white;
+    background: rgba(0, 0, 0, 0);
+}
+button.outline:hover{
+    border: white 3px solid;
+    color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 1);
 }
 button.invert:hover{
     background: rgb(214, 214, 214);
@@ -148,17 +170,6 @@ button.glow:hover{
     box-shadow: 0px 0px 12px -2px rgb(0,255,255);
     text-shadow: 0px 0 10px 2px rgb(0,255,255);
     background-color: rgba(43, 128, 128, 0.63);
-}
-.disabled{
-    background: lightgray;
-    color: gray;
-}
-.disabled:hover{
-    cursor: not-allowed;
-    background: lightgray;
-}
-.disabled:active{
-    transform: translate3d(0px,0px,0px);
 }
 .corners{
     background: none;
@@ -286,19 +297,22 @@ position: relative;
 
 .pulser{
     position: absolute;
-    animation-name: pulsing;
-    animation-duration: 1s;
+   
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.404);
-    animation-fill-mode: forwards;
+    background: var( --ripple-color);
     opacity: 0;
+    animation-fill-mode: forwards;
+     animation-name: pulsing;
+    animation-duration: 1.5s;
+   
 }
 @keyframes pulsing {
     0%  {transform: scale(0);}
-    60% {opacity: 1;}
+    60% {opacity: .8;}
     80% {transform: scale(var(--ripple-size));}
+
     100%{opacity: 0;}
   }
 
@@ -308,5 +322,115 @@ position: relative;
 }
 .break {
     width: 100%;
-  
   }
+.tabs-menu{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat( auto-fit, minmax(var(--tabs-min-width), 1fr));
+    overflow-x: auto;
+    grid-auto-flow: column;
+}
+.tabs-option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background: rgba(25, 25, 25, 1);
+    box-sizing: border-box;
+    min-width: var(--tabs-min-width);
+    transition-duration: .5s;
+    position: relative;
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none;
+}
+
+.select-rail{
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: rgb(var(--tabs-highlight));
+    position: absolute;
+    bottom: 0px;
+    transition-duration: .5s;
+    z-index: 2;
+    display: var(--tabs-rail-display);
+}
+.tabs-option:hover{
+    cursor: pointer;
+    background: rgba(var(--tabs-highlight),.2);
+    color: rgba(var(--tabs-highlight),12);
+}
+.tabs-view{
+    padding: 25px;
+    background: rgb(61, 61, 61);
+    min-width: 100%;
+  
+    box-sizing: border-box;
+    transition-duration: inherit;
+}
+
+.flex{
+    color: pink;
+}
+.tabs-window{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.tabs-window.tabs-round{
+    border-radius: 0px 0px 30px 30px;
+}
+.tabs-menu.tabs-round{
+    border-radius: 30px 30px 0px 0px;
+}
+.tabs-animated{
+    transition-duration: .5s;
+}
+.tabs-white > .tabs-option{
+    color: rgb(19, 19, 19);
+    background: rgb(255, 255, 255);
+}
+.tabs-white > .tabs-option.disabled{
+    color: gray;
+    background: lightgray;
+}
+
+
+.tabs-white > .tabs-view{
+    color: rgb(19, 19, 19);
+    background : rgb(224, 224, 224);
+}
+.disabled{
+    background: lightgray;
+    color: gray;
+}
+button.disabled:hover{
+    background: lightgray;
+}
+.disabled:hover{
+    cursor: not-allowed;
+}
+.disabled:active{
+    transform: translate3d(0px,0px,0px);
+}
+.tabs-option + .disabled{
+    background: rgb(50, 50, 50);
+}
+.tabs-option + .disabled:hover{
+    color: gray;
+}
+.tabs-active{
+    color: rgb(var(--tabs-highlight));
+    background: rgba(var(--tabs-highlight),.1);
+}
+.tabs-white > .tabs-active{
+    color: rgb(var(--tabs-highlight));
+}
+
+.tabs-full-highlight > .tabs-active {
+  background: rgb(var(--tabs-highlight));
+  color: white;
+}

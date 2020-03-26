@@ -18,7 +18,7 @@
                         Hi, Welcome To 
                         
                         <span class="krimson">
-                            KRIMSON.JS
+                            GLASNOST.JS
                         </span>
                     </div>
                     <div class="Hcontainer ">
@@ -40,7 +40,7 @@
             <div id="larrow"></div>
             <div id="rarrow"></div>
         </div>
-        <span class="navtitle" onclick="window.location='#Home';">KRIMSON.JS</span>
+        <span class="navtitle mortingarage " onclick="window.location='#Home'" c>GLASNOST.JS</span>
         <div class="navitem" id="a">About</div>
         <div class="navitem" id="b">Start</div>
         <div class="navitem" id="c">Components</div>
@@ -51,17 +51,38 @@
     <div class="Page" id="Start">
             <h1>START</h1>
             <h3>Installation </h3>
-            <p>Here is CDN</p>
-            <p>Here is NPM</p>
+            <div class="windex">
+            <div class="tabs-menu" id="installer">
+            <div class="tabs-option">Git Downlaod</div>
+            <div class="tabs-option">CDN Link</div>
+            <div class="tabs-option">NPM Install</div>
+            </div>
+            <div class="tabs-window" id="installer-window">
+                    <div class="tabs-view">Git Downlaod</div>
+                    <div class="tabs-view">CDN Link</div>
+                    <div class="tabs-view">NPM Install</div>
+            </div>
+        </div>
+            
             <h3>Guide to Documentation</h3>
-            <p>Every compotent / feature will have its dedicated page with all relevant code markup and class names written in blocks <code> like this </code> All variations of the same
+            <div class="windex">Every compotent / feature will have its dedicated page with all relevant code markup and class names written in blocks <code> like this </code> All variations of the same
             feature / component will be mentioned on the same page. However, since my focus is easy and full customisability, I encourage to make some of your 
         own classes for your primary styles. 
-        <br><br>
-        However, due to a lot of the JQuery elements and their very specific configurations, add CSS vasiables throughout. They too are in code blocks and all 
-        have the same prefix <code>--like-this</code> All varaible names generally explain what they control, and all of them can be found in the <code>body</code>
-         class of the CSS file. Since I am nice, to change a variable you could just use this funciton <code>setVaraible(varName, newValue)</code>
-     </p>
+        <br><br><br>
+        However, due to a lot of the JQuery generated elements and their very specific configurations, there are CSS variables for quick and easy configuration throughout. They too are in code blocks and all 
+        have the same prefix <code>--like-this</code> All varaible names generally explain what they control, and all of them can be found in the <code>:root</code>
+         element of the CSS file. Since I am nice, to change a variable you could just use this funciton <code>setVaraible(varName, newValue)</code> I will mention them next to 
+         a component if they are relevant but check <code>:root</code> for a full list. CSS variables are amazing because you can override them differently 
+         in different scopes, making customisability much easier in terms of configuring not only basic CSS values but also JQuery added components in Glasnost.
+         <br><br><br>
+         The use of square brackets is to signify use of your own value of some kind, like while assigning a unique ID to tabs, like this : 
+         <code >[yourIDHere]</code> 
+
+
+        <br><br> 
+        If you ever see the icon <i class="fab fa-js-square"></i> next to a code block, it means that Glasnost generates more dom elements with the <code>script.js</code> file before rendering
+        so in case you're trying to heavily modify the structure or class keep that in mind.
+            </div>
     </div>
     <div class="Page" id="Buttons">
             <h1>BUTTONS</h1>
@@ -95,6 +116,12 @@
                     </span>
                 </div> 
                 <div class="nextline">
+                        <button class="outline "> Button </button> Outline  </div>
+                    <div class="code">
+                        <pre><button class="outline"> Button </button></pre>
+                      
+                    </div> 
+                <div class="nextline">
                     <button class="  glow">Button</button> Glow?
                 </div>
                 <div class="code">
@@ -121,7 +148,7 @@
                          
                 </div>
                 <div class="code">
-                    <pre><button class="brackets"> Button </button></pre>   
+                    <pre><button class="brackets"> Button </button></pre> <i class="fab fa-js-square"></i>
                     <span class="break"></span>
                     <pre>--bracket-color : rgb(255,255,255)
 --transparent-btn-bg: rgba(27, 255, 57, 0.178)</pre>
@@ -131,7 +158,7 @@
                     <button class="corners">Button</button>  Corners
                 </div>
                 <div class="code">
-                    <pre><button class="corners"> Button </button></pre> 
+                    <pre ><button class="corners"> Button </button></pre> <i class="fab fa-js-square"></i>
                     <span class="break"></span>
                     <pre>--corner-color : rgb(255,255,255)
 --transparent-btn-bg: rgba(27, 255, 57, 0.178)</pre>
@@ -142,18 +169,113 @@
                 <div class="code">
                     <pre><button class="ripple invert"> Button </button></pre>
                     <span class="break"></span>
-                    <pre>--ripple-size: 10</pre>
+                    <pre>--ripple-size: 10
+--ripple-color: rgba(255, 255, 255, 0.5);</pre>
                 </div>
                 <div class="nextline">
-                    <button class="btn-icon invert"><i class='material-icons'> star </i> </button> Icon Button
+                    <button class="btn-icon invert"><i class="fas fa-jedi"></i></button> Icon Button
                 </div>   
                 <div class="code">
 <pre><button class="btn-icon invert">
-    <i class='material-icons'> star </i>
+    <i class="fas fa-jedi"></i>
 </button></pre>
             </div>          
         </div>
     </div>
+    <div class="Page" id="Tabs">
+            <h1>TABS</h1>
+           
+                <h3>General Guide</h3>
+                <div class="windex">
+                    Main tab bar is a grid which dynamically sizes the tabs to fit, which have a min-width defined by
+                    <code>--tabs-min-width : 100px</code> and all tabs are flex displays. Minimum of one tab is required.
+                    <br><br>
+                    The slider is added to the first tab and dynamically resizes and moves with width of the first tab. The active tab
+                    has the class <code>.tabs-active</code> and slider has <code>.select-rail</code> If you however just want to change the color 
+                 use <code>  --tabs-highlight : 255, 109, 121 </code> Note that this color variable can only be written as 3 numbers to be a part of an RGB value.
+                  Another general configuration is the visibility of the colored slider with the use of the variable <code> --tabs-rail-display : block</code>
+                            <br><br>
+                    The tabs and their window are linked by adding a postfix to the ID of the tabs menu bar and making that the ID of tabs window like this :
+                     <code>[yourIDHere]-window</code> 
+                     <br><br> The tabs correspond to the windows by their index, i.e the 3rd tab will display the 3rd div in the corresponding window.
+                     <br><br> You will see below that tabs can be made disabled. They still require some kind of div with the <code> .tabs-view </code> class and
+                      will automatically hide their content from the webpage before rendering 
+                        and all that is done by simply adding a class to the tab. However note that in case you want to enable a disabled tab, you would also
+                        have to reload the page as the full script only runs on <code>$(document).ready()</code> 
+                </div>
+                <h3> Default tabs layout:</h3> 
+                <div class="windex ">
+                <div class="tabs-menu" id="sometab">
+                   <div class="tabs-option"> Option 1</div>
+                   <div class="tabs-option"> Option 2</div>
+                   <div class="tabs-option"> Option 3</div>
+                   <div class="tabs-option"> Option 4</div>
+                </div>
+                <div class="tabs-window" id="sometab-window">
+                    <div class="tabs-view"> Option 1</div>
+                    <div class="tabs-view"> Option 2</div>
+                    <div class="tabs-view"> Option 3</div>
+                    <div class="tabs-view"> Option 4</div>
+                </div><br>
+                <div class="center"><br>
+               
+              <pre><div class="tabs-menu" id="[yourIDHere]">
+    <div class="tabs-option"> Option 1</div>
+    <div class="tabs-option"> Option 2</div>
+    <div class="tabs-option"> Option 3</div>
+    <div class="tabs-option"> Option 4</div>
+</div>
+<div class="tabs-window" id="[yourIDHere]-window">
+    <div class="tabs-view"> Option 1</div>
+    <div class="tabs-view"> Option 2</div>
+    <div class="tabs-view"> Option 3</div>
+    <div class="tabs-view"> Option 4</div>
+</div></pre><br>
+<i class="fab fa-js-square"></i>
+</div>
+
+<br>
+                </div>
+                <h3>Some more styles and features:</h3>
+                <div class="windex">
+                <div class="tabs-menu tabs-round  tabs-white tabs-full-highlight" id="sometab2">
+                        <div class="tabs-option ">  <i class="fas fa-cat"></i></div>
+                        <div class="tabs-option "> Option 2</div>
+                        <div class="tabs-option disabled "> Option 3</div>
+                        <div class="tabs-option  "> Option 4</div>
+                     </div>
+                <div class="tabs-window tabs-round tabs-animated tabs-white" id="sometab2-window">
+                    <div class="tabs-view"> Option 1</div>
+                    <div class="tabs-view"> Option 2</div>
+                    <div class="tabs-view"> Option 3</div>
+                    <div class="tabs-view"> Option 4</div>
+                </div>
+                <br>
+                <div class="center"><br>
+               <pre>#[yourIDHere2] {
+    --ripple-color: rgba(0, 205, 150, 0.2);
+    --ripple-size: 15;
+    --tabs-highlight : 100, 205, 150;
+    --tabs-rail-display : none;
+}</pre><br>
+<pre><div class="tabs-menu tabs-round tabs-white tabs-full-highlight" id="sometab2">
+    <div class="tabs-option">  <i class="fas fa-cat"></i></div>
+    <div class="tabs-option"> Option 2</div>
+    <div class="tabs-option disabled"> Option 3</div>
+    <div class="tabs-option"> Option 4</div>
+</div>
+<div class="tabs-window tabs-round tabs-animated tabs-white" id="sometab2-window">
+    <div class="tabs-view"> Option 1</div>
+    <div class="tabs-view"> Option 2</div>
+    <div class="tabs-view"> Option 3</div>
+    <div class="tabs-view"> Option 4</div>
+</div></pre><br>
+<i class="fab fa-js-square"></i>
+</div>
+
+<br>
+            </div>
+        </div>
     <div class="Page" id="Components">
             <h1>COMPONENTS</h1>
             <h3>
@@ -161,7 +283,7 @@
             </h3>
             <div class="componentsdisp">
                 <a href="#Buttons">Buttons</a>
-                <a href="#Buttons">Buttons</a>
+                <a href="#Tabs">Tabs</a>
                 <a href="#Buttons">Buttons</a>
                 <a href="#Buttons">Buttons</a>
                 <a href="#Buttons">Buttons</a>
@@ -180,12 +302,14 @@
     </div>
 </body>
 
-<link rel="stylesheet" href="main.css">
+
 <link rel="stylesheet" href="format.css">
+<link rel="stylesheet" href="main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600|Oswald:300,200&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/ed8736d869.js" crossorigin="anonymous"></script>
 <script src="script.js"></script>
 <script src="box.js"></script>
