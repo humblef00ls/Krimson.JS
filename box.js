@@ -9,7 +9,7 @@ drawGrid();
 
 var mousePressed = false;
 var lastX, lastY;
-var rad1 = 1;
+var rad1 = .1;
 var fpscon = 30;
 var canvas = $('canvas#buax');
 var canvasWidth = $(window).width();
@@ -32,8 +32,8 @@ var spin =  canvasWidth/2 ;
 var apin = canvasHeight/2;
 var max = Math.max(canvasWidth,canvasHeight)
 var $radix = Math.PI * 2 * Math.random();
-var velo  = .004;
-var $zeta = max/2.5;
+var velo  = .4;
+var $zeta = max/.9;
 
  
 function drawDot(x, y, radius,color,blur) {
@@ -44,18 +44,18 @@ function drawDot(x, y, radius,color,blur) {
     context.fill();
 }
 function drawGrid(){
-     rad1 = 1.7;
+     rad1 = .8;
       shifter = 0;
-      velo  = .004;
+       velo  = .004;
 for(let i = 1; i <  $zeta + 1; i++){
 
     var distance =  max/2 * Math.random() + 50  ;
     var distance2 =  max/2 * Math.random() + 50  ;
     
     var rad = Math.PI * 2 * Math.random();
-    var sizeolife = 1 + (distance/(max/2))*2
+    var sizeolife = rad1 + (distance/(max/2))*2
     if( probability( .3) ){
-    var c0l0rhex = `hsla(${350 - (distance/(max/2))*90},100%,50%,1)`;
+    var c0l0rhex = `hsla(${360 - (distance/(max/2))*90},100%,50%,1)`;
     var yagami = `hsla(${350 - (distance/(max/2))*90},100%,50%,.01)`;
     }
     else{
@@ -124,12 +124,13 @@ function drawAnimate(){
 var shifter = 0;
 function drawAnimate() { 
     //var x = -10  + step ;
+    //mousePressed = true
     var n = -10;
     //var y = -10 + news;
     var m = -10; 
     if(mousePressed){
         shifter+=.05;
-       //velo = .004 -  shifter/6000;
+       velo = .004 -  shifter/4000;
         context.fillStyle =  'rgba(1,1,1,.01)';
     }
     else
@@ -146,8 +147,8 @@ function drawAnimate() {
         
         if(mousePressed){
 
-            spin  = canvasWidth/2  + Math.cos(dots[i].radix) * ((dots[i].distx ) * (1 + shifter/50))+ ((dots[i].distx/200) * ( shifter*1.2))
-            apin  = canvasHeight/2 + Math.sin(dots[i].radix) * ((dots[i].distx ) * (1 + shifter/50))+ ((dots[i].distx/200) * ( shifter*1.2))
+            spin  = canvasWidth/2  + Math.cos(dots[i].radix) * ((dots[i].distx ) * (1 + shifter/50)) *( 1 + (dots[i].distx/1000) * ( shifter/20))
+            apin  = canvasHeight/2 + Math.sin(dots[i].radix) * ((dots[i].distx ) * (1 + shifter/50)) *( 1 + (dots[i].distx/1000) * ( shifter/20))
            // drawDot(spin,apin ,sx * 3 , dots[i].halo,mousePressed);
         }
         else{
