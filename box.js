@@ -32,8 +32,8 @@ var spin =  canvasWidth/2 ;
 var apin = canvasHeight/2;
 var max = Math.max(canvasWidth,canvasHeight)
 var $radix = Math.PI * 2 * Math.random();
-var velo  = .4;
-var $zeta = max/.9;
+var velo  = .002;
+var $zeta = max;
 
  
 function drawDot(x, y, radius,color,blur) {
@@ -46,7 +46,7 @@ function drawDot(x, y, radius,color,blur) {
 function drawGrid(){
      rad1 = .8;
       shifter = 0;
-       velo  = .004;
+       velo  = .002;
 for(let i = 1; i <  $zeta + 1; i++){
 
     var distance =  max/2 * Math.random() + 50  ;
@@ -130,7 +130,7 @@ function drawAnimate() {
     var m = -10; 
     if(mousePressed){
         shifter+=.05;
-       velo = .004 -  shifter/4000;
+       velo = .002 -  shifter/9000;
         context.fillStyle =  'rgba(1,1,1,.01)';
     }
     else

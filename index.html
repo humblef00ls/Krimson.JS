@@ -239,7 +239,7 @@
                 <h3>Some more styles and features:</h3>
                 <div class="windex">
                 <div class="tabs-menu tabs-round  tabs-white tabs-full-highlight" id="sometab2">
-                        <div class="tabs-option ">  <i class="fas fa-cat"></i></div>
+                        <div class="tabs-option "><i class="fas fa-cat"></i></div>
                         <div class="tabs-option "> Option 2</div>
                         <div class="tabs-option disabled "> Option 3</div>
                         <div class="tabs-option  "> Option 4</div>
@@ -252,19 +252,19 @@
                 </div>
                 <br>
                 <div class="center"><br>
-               <pre>#[yourIDHere2] {
+               <pre>#[yourIDHere] {
     --ripple-color: rgba(0, 205, 150, 0.2);
     --ripple-size: 15;
     --tabs-highlight : 100, 205, 150;
     --tabs-rail-display : none;
 }</pre><br>
-<pre><div class="tabs-menu tabs-round tabs-white tabs-full-highlight" id="sometab2">
-    <div class="tabs-option">  <i class="fas fa-cat"></i></div>
-    <div class="tabs-option"> Option 2</div>
+<pre><div class="tabs-menu tabs-round tabs-white tabs-full-highlight" id="[yourIDHere]">
+    <div class="tabs-option"><i class="fas fa-cat"></i></div>
+    <div class="tabs-option">Option 2</div>
     <div class="tabs-option disabled"> Option 3</div>
     <div class="tabs-option"> Option 4</div>
 </div>
-<div class="tabs-window tabs-round tabs-animated tabs-white" id="sometab2-window">
+<div class="tabs-window tabs-round tabs-animated tabs-white" id="[yourIDHere]-window">
     <div class="tabs-view"> Option 1</div>
     <div class="tabs-view"> Option 2</div>
     <div class="tabs-view"> Option 3</div>
@@ -276,6 +276,89 @@
 <br>
             </div>
         </div>
+        <div class="Page parallax-listener" id="Parallax">
+                <h1>PARALLAX</h1>
+    <h3>General Guide</h3>
+    <div class="windex">
+        While there are CSS ways to do parallax, I found them not practical, so these are all JQuery based. They hide overflow and in the back 
+        scale up the element to be parallaxed. To set up, you firstly need to add class <code >.parallax-listner</code> to the <code> body </code> or the local element 
+        inside which you want to detect scroll. This basically adds a JQuery scroll event to that element. 
+        <br><br>
+        Inside the element, set up the elements to be 
+        parallaxed as such : 
+        <br><br>
+        <div class="center">
+        <pre><div class="parallax"> 
+    <div class="parallax-background">
+        [yourBackground]
+    </div>
+    <div class="parallax-base center">
+        [yourContent]
+    </div>
+</div></pre>
+<br>
+<i class="fab fa-js-square"></i>
+<br>
+<pre>--parallax-speed : 7;
+--parallax-scale : 1.5;
+--parallax-height : 90vh;
+</pre>
+</div>
+<br>
+    </div>            
+    <div class="parallax"> 
+        <div class="parallax-background">
+                <img src="resources/parallax1.jpg">
+        </div>
+        <div class="parallax-base center text-space"> Fire in a bottle</div>
+    </div>
+<div class="windex">
+
+Inside <code>.parallax-background</code> and <code>.parallax-base</code> you really can put anything you want. In the demo here I have just a custom style 
+class for the base/foreground and an img element in the background. As you can see, the speed and the scale of the background are easy to change with variables.
+The height for the element has to be specified with a value and can either be changed by the variable or just override the <code>.parallax</code> class.
+Note that while <code>--parallax-height</code> works with local scopes, <code>--parallax-speed</code> and <code>--parallax-scale</code> are global only.
+
+</div>
+<div class="parallax"> 
+        <div class="parallax-background">
+                <img src="resources/parallax2.jpg">
+        </div>
+        <div class="parallax-base center text-space">Lightning in a bottle</div>
+    </div>
+    <div class="windex">
+        The elements inside <code>.parallax-background</code> get their position offset by the equation ( <code>elpos </code> - <code>center</code> ) / <code> $parallaxspeed </code> where <code>elpos</code>
+         is the element's position in the window, and <code>center</code> is just half of the window's height. <code>$parallaxspeed</code> is whatever value defined 
+         in  <code>--parallax-speed</code> in the <code>:root</code> of the main style class.
+    </div>
+<div class="parallax"> 
+        <div class="parallax-background">
+            <img src="resources/parallax4.jpg">
+        </div>
+        <div class="parallax-base center text-space"> Star in a bottle</div>
+    </div>
+    
+        </div>
+
+        <div id="Preloader" class="Page">
+
+ <h1>PRELOADER</h1>
+ <h3>General Guide</h3> 
+            <div class="windex">
+                Below is a basic instance of how you can set up a preloader component. The way to use them would be on JQuery <code> $(document).ready() </code>, call 
+                <code>$('.preloader').hide()</code> but I have not added that by default so you can create custom animations and such. 
+               <div class="preloader"> 
+                   <div class="preloader-title"> 
+                        <i class="fas fa-user-astronaut"></i>
+                   </div>
+               </div>
+               <div class="preloader"> 
+                    <div class="preloader-title"> 
+                        <span>WILDCARD</span> 
+                    </div>
+                </div>
+        </div>
+        </div>
     <div class="Page" id="Components">
             <h1>COMPONENTS</h1>
             <h3>
@@ -284,8 +367,8 @@
             <div class="componentsdisp">
                 <a href="#Buttons">Buttons</a>
                 <a href="#Tabs">Tabs</a>
-                <a href="#Buttons">Buttons</a>
-                <a href="#Buttons">Buttons</a>
+                <a href="#Parallax">Parallax</a>
+                <a href="#Preloader">Preloader</a>
                 <a href="#Buttons">Buttons</a>
                 <a href="#Buttons">Buttons</a>
                 <a href="#Buttons">Buttons</a>

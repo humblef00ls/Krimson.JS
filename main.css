@@ -15,6 +15,11 @@
     --tabs-highlight : 255, 109, 121;
     --tabs-min-width : 100px;
     --tabs-rail-display : block;
+    --parallax-speed : 7;
+    --parallax-scale : 1.5;
+    --parallax-height : 90vh;
+    --preloader-color :  rgb(255, 0, 72);
+
   }
 
   .center{
@@ -433,4 +438,111 @@ button.disabled:hover{
 .tabs-full-highlight > .tabs-active {
   background: rgb(var(--tabs-highlight));
   color: white;
+}
+
+.parallax-listener{ 
+
+}
+
+
+.parallax{
+    height:var(--parallax-height);
+    width: 100%;
+position: relative;
+}
+
+.parallax-base{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+ 
+}
+.parallax-background{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 0;
+}
+.parallax-background > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate3d(-50%, -50%, 0px) scale(var(--parallax-scale));
+}
+.preloader{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #141414;
+}
+.preloader > *{
+    margin: 10px;
+}
+.preloader-title{
+    font-size: 3em;
+    color: var(--preloader-color);
+
+}
+
+.preloader-anim{
+    height: 2px;
+    width: 75%;
+    background:  var(--preloader-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.preloader-anim::before{
+    content:'';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background: black;
+    transform: translate3d(-50%,0,0);
+    animation: anim 3s ;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+    animation-timing-function: cubic-bezier(0.55, -0.01, 0.48, 1);
+}
+.preloader-anim::after{
+    content:'';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background: black;
+    transform: translate3d(50%,0,0);
+    animation: anim 3s ;
+    animation-delay: 1.5s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+    animation-timing-function: cubic-bezier(0.55, -0.01, 0.48, 1);
+    
+}
+@keyframes anim {
+    0% {
+        transform: translate3d(-100%,0,0);
+    }
+   
+    100%{
+        transform: translate3d(100%,0,0);
+    }
+    
 }

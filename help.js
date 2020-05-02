@@ -45,7 +45,7 @@ $('button#runaway').click(function(){
        mousePressed = false;
        window.location='#Start';
        
-    }, 3500);
+    }, 3300);
 });
 
 

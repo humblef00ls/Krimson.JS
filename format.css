@@ -321,7 +321,8 @@ animation: soothing .5s ease-in-out 0s ;
     letter-spacing: 2px;
     font-size: 1.1em;
     font-weight: 100;
-  
+    position: relative;
+    line-height: 30px;
 }
 
 .componentsdisp {
@@ -340,7 +341,7 @@ animation: soothing .5s ease-in-out 0s ;
 
 
 }
-#Components h1, #Buttons h1, #Tabs h1{
+ h1{
     border-bottom: 4px hsl(240, 100%, 70%) solid;
 }
 
@@ -536,9 +537,7 @@ padding-right: 10px;
 .fab{
     font-size: 1.3em;
 }
-.fas{
-    font-size: 1.5em;
-}
+
 .fa-js-square{
     color: hsl(212, 100%, 60%);
     font-size: 24px;
@@ -550,7 +549,7 @@ div.windex > code{
     padding-left: 8px;
     padding-right: 8px;
     margin: 2px;
-    line-height: unset;
+   
 }
 
 .j-elem{
@@ -579,4 +578,17 @@ div.windex > code{
     100%{
  
     opacity: 0;}
+}
+
+.text-space{
+    letter-spacing: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.6em;
+    text-align: center;
+    line-height: 50px;
+}
+
+.parallax-base{
+    background: rgba(0, 0, 0, .5)
 }

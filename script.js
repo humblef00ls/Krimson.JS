@@ -1,5 +1,7 @@
-
+$('.preloader').append("<div class='preloader-anim'></div>");
   
+
+
 $(document).ready(function(){
     
     $('.brackets').each(function(){
@@ -30,8 +32,9 @@ $(document).ready(function(){
                 $($winID).children().eq($(this).index()).html(" ");
                 $($winID).children().eq($(this).index()).hide();
             }
-        })
-       
+        }) 
+        
+        
         $tabs.click(function (e) {
             if($(this).hasClass('disabled')){
             return false
@@ -54,10 +57,17 @@ $(document).ready(function(){
        // $(this).children().toggleClass('flex');
         }
     });
-    
-  
+
+          
+
     
 });
+var $parallaxspeed = getVariable("--parallax-speed")
+var $parallaxscale = getVariable("--parallax-scale")
+function isHidden(el) {
+    return (el.offsetParent === null)
+}
+
 $(window).resize(function(){
     setTimeout(function(){
         $('span.select-rail').each(function (param) { 
@@ -72,7 +82,51 @@ $(window).resize(function(){
         
             $(this).css("transform","translate3d(" + $(this).width() * $selected   + "px,0,0)");
         })
-    },50)    
+    },30)    
+});
+
+
+
+$(window).on('load',function () { 
+
+         
+    var $img = $('.parallax').find($('.parallax-background')).children()
+    var st = $(this).scrollTop();
+    $img.each(function (index) {  
+        var offset = $(this).parent().offset();
+        var center = $(window).height()/2
+        var top = offset.top;
+        var elpos = top + $(this).height()/2
+        var $ht 
+        $ht = (elpos - center)/ $parallaxspeed ;
+        var x = $ht
+        $(this).css("transform","translate3d(-50%,calc(-50% + " + x + "px),0px) scale(" +  $parallaxscale  + ")")
+
+      
+    })
+  
+    
+})
+
+
+$('.parallax-listener').scroll(function () { 
+    var $img = $('.parallax').find($('.parallax-background')).children()
+    var st = $(this).scrollTop();
+    $img.each(function (index) {  
+        var offset = $(this).parent().offset();
+        var center = $(window).height()/2
+        var top = offset.top;
+        var elpos = top + $(this).height()/2
+        var $ht 
+        $ht = (elpos - center)/ $parallaxspeed ;
+        var x = $ht
+        $(this).css("transform","translate3d(-50%,calc(-50% + " + x + "px),0px) scale(" +  $parallaxscale  + ")")
+      
+    })
+       
+      
+   
+    
 });
 
 var $pulsecount = 0;
