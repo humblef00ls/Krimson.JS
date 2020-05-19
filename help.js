@@ -26,10 +26,15 @@ $(document).ready(function(){
         $(`pre:eq(${kii})`).html(escapeHtml(kshmr));
     }
     
-   
+$(window).on('load', function () {
+    setTimeout(function (param) {     $('.mainloader').fadeOut(1000); },0)
+
+});
 
 
 });
+
+
 var isup = false;
 var clear ;
 $('button#runaway').click(function(){

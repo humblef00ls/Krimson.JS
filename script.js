@@ -1,8 +1,20 @@
-$('.preloader').append("<div class='preloader-anim'></div>");
-  
 
 
 $(document).ready(function(){
+    $('.preloader').each(function(){
+        if($(this).parent().prop("tagName")!=$('pre').prop("tagName"))
+            $(this).append("<div class='preloader-anim'></div>");
+    })
+    $('.preloader-circle').each(function(){
+        if($(this).parent().prop("tagName")!=$('pre').prop("tagName"))
+            $(this).append("<div class='preloader-anim-2'></div>");
+    })
+    $('.preloader-content').each(function(){
+        if($(this).parent().prop("tagName")!=$('pre').prop("tagName"))
+            $(this).append("<div class='preloader-anim-3'></div>");
+    })
+
+
     
     $('.brackets').each(function(){
         
@@ -57,7 +69,61 @@ $(document).ready(function(){
        // $(this).children().toggleClass('flex');
         }
     });
+    $('table.table-index').each(function(){
+        if($(this).parent().prop("tagName")!=$('pre').prop("tagName")){
+            $(this).find($('thead')).find($('tr')).prepend("<th class = 'col-sort'>No.</th>");
+            $(this).find($('tbody')).find($('tr')).each(function(index){
+                $(this).prepend(`<td >${index+1}</td>`);
+            })
 
+        }
+    })
+
+
+    var flags = [];
+    var initclick= [];
+    $('.col-sort').each(function(){
+        if($(this).parent().parent().parent().prop("tagName")!=$('pre').prop("tagName")){
+                flags.push(-1);
+                initclick.push(0);
+                $(this).addClass('col-sort-arr-up');
+                $(this).addClass('col-sort-arr-down');
+        }
+    })
+
+    $(".col-sort").click(function(index){
+   flags[$(this).index()] *= -1;
+    var n = $(this).prevAll().length;
+    sortTable(flags[$(this).index()] ,n);
+    if(initclick[$(this).index()] == 0){
+        $(this).toggleClass('col-sort-arr-up');
+        initclick[$(this).index()] = 1
+    }
+    else{
+        $(this).toggleClass('col-sort-arr-down');
+        $(this).toggleClass('col-sort-arr-up');
+    }
+   
+});
+    $('.parallax-listener').ready(function () { 
+        
+        var $img = $('.parallax').find($('.parallax-background')).children()
+        var st = $(this).scrollTop();
+        $img.each(function (index) {  
+            var offset = $(this).parent().offset();
+            var center = $(window).height()/2
+            var top = offset.top;
+            var elpos = top + $(this).height()/2
+            var $ht 
+            $ht = (elpos - center)/ $parallaxspeed ;
+            var x = $ht
+            $(this).css("transform","translate3d(-50%,calc(-50% + " + x + "px),0px) scale(" +  $parallaxscale  + ")")
+    
+          
+        })
+      
+        
+    })
           
 
     
@@ -87,26 +153,7 @@ $(window).resize(function(){
 
 
 
-$(window).on('load',function () { 
 
-         
-    var $img = $('.parallax').find($('.parallax-background')).children()
-    var st = $(this).scrollTop();
-    $img.each(function (index) {  
-        var offset = $(this).parent().offset();
-        var center = $(window).height()/2
-        var top = offset.top;
-        var elpos = top + $(this).height()/2
-        var $ht 
-        $ht = (elpos - center)/ $parallaxspeed ;
-        var x = $ht
-        $(this).css("transform","translate3d(-50%,calc(-50% + " + x + "px),0px) scale(" +  $parallaxscale  + ")")
-
-      
-    })
-  
-    
-})
 
 
 $('.parallax-listener').scroll(function () { 
@@ -150,5 +197,57 @@ function setVariable(varname, newValue){
 
 function getVariable(varname){
     return getComputedStyle(document.documentElement).getPropertyValue(varname);
+}
+
+function cleanHTML(input) {
+   input.replace(/\s/g, '')
+    var stringStripper = /(\n|\r| class=(")?Mso[a-zA-Z]+(")?)/g; 
+    var output = input.replace(stringStripper, ' ');
+    var commentSripper = new RegExp('<!--(.*?)-->','g');
+    var output = output.replace(commentSripper, '');
+    var tagStripper = new RegExp('<(/)*(meta|link|span|\\?xml:|st1:|o:|font)(.*?)>','gi');
+    output = output.replace(tagStripper, '');  
+    var badTags = ['style', 'script','applet','embed','noframes','noscript'];
+    for (var i=0; i< badTags.length; i++) {
+      tagStripper = new RegExp('<'+badTags[i]+'.*?'+badTags[i]+'(.*?)>', 'gi');
+      output = output.replace(tagStripper, '');
+    }
+    var badAttributes = ['style', 'start'];
+    for (var i=0; i< badAttributes.length; i++) {
+      var attributeStripper = new RegExp(' ' + badAttributes[i] + '="(.*?)"','gi');
+      output = output.replace(attributeStripper, '');
+    }
+    return output;
+  }
+
+
+  function sortTable(f,n){
+	var rows = $('.table-sort tbody  tr').get();
+
+	rows.sort(function(a, b) {
+
+		var A = getVal(a);
+		var B = getVal(b);
+
+		if(A < B) {
+			return -1*f;
+		}
+		if(A > B) {
+			return 1*f;
+		}
+		return 0;
+	});
+
+	function getVal(elm){
+		var v = $(elm).children('td').eq(n).text().toUpperCase();
+		if($.isNumeric(v)){
+			v = parseInt(v,10);
+		}
+		return v;
+	}
+
+	$.each(rows, function(index, row) {
+		$('.table-sort').children('tbody').append(row);
+	});
 }
 

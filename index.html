@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="mainloader">
+        <div class="preloader"></div>
+    </div>
     <div class="Page" id="Home">
                 <div class="CC"> 
                     <canvas id="buax">
@@ -18,12 +21,14 @@
                         Hi, Welcome To 
                         
                         <span class="krimson">
-                            GLASNOST.JS
+                            SANGUINAR.JS
                         </span>
                     </div>
                     <div class="Hcontainer ">
                         
-                            [Yet another 'modern responsive front-end framework', but cooler and more extra.]
+                            Yet another 'modern responsive front-end framework', but cooler and more extra.
+                            <br>
+                            (Yay!)
                        
                         <button class=" gradient" id="runaway">
                             Get Started
@@ -40,7 +45,7 @@
             <div id="larrow"></div>
             <div id="rarrow"></div>
         </div>
-        <span class="navtitle mortingarage " onclick="window.location='#Home'" c>GLASNOST.JS</span>
+        <span class="navtitle mortingarage " onclick="window.location='#Home'" c>SANGUINAR.JS</span>
         <div class="navitem" id="a">About</div>
         <div class="navitem" id="b">Start</div>
         <div class="navitem" id="c">Components</div>
@@ -73,20 +78,23 @@
         have the same prefix <code>--like-this</code> All varaible names generally explain what they control, and all of them can be found in the <code>:root</code>
          element of the CSS file. Since I am nice, to change a variable you could just use this funciton <code>setVaraible(varName, newValue)</code> I will mention them next to 
          a component if they are relevant but check <code>:root</code> for a full list. CSS variables are amazing because you can override them differently 
-         in different scopes, making customisability much easier in terms of configuring not only basic CSS values but also JQuery added components in Glasnost.
+         in different scopes, making customisability much easier in terms of configuring not only basic CSS values but also JQuery added components in SANGUINAR.
          <br><br><br>
          The use of square brackets is to signify use of your own value of some kind, like while assigning a unique ID to tabs, like this : 
          <code >[yourIDHere]</code> 
 
 
         <br><br> 
-        If you ever see the icon <i class="fab fa-js-square"></i> next to a code block, it means that Glasnost generates more dom elements with the <code>script.js</code> file before rendering
+        If you ever see the icon <i class="fab fa-js-square"></i> next to a code block, it means that SANGUINAR generates more dom elements with the <code>script.js</code> file before rendering
         so in case you're trying to heavily modify the structure or class keep that in mind.
             </div>
     </div>
     <div class="Page" id="Buttons">
             <h1>BUTTONS</h1>
-         
+            <h3>General Guide</h3>
+            <div class="windex">
+                Below are the different styles of buttons you could add. All relevant variables for that kind of button are listed next to it. <code> --btn-travel </code> is a general variable.
+            </div>
             <div class="componentsdisp">
                 <div class="nextline">
                     <button> Button</button> Default Button
@@ -252,12 +260,6 @@
                 </div>
                 <br>
                 <div class="center"><br>
-               <pre>#[yourIDHere] {
-    --ripple-color: rgba(0, 205, 150, 0.2);
-    --ripple-size: 15;
-    --tabs-highlight : 100, 205, 150;
-    --tabs-rail-display : none;
-}</pre><br>
 <pre><div class="tabs-menu tabs-round tabs-white tabs-full-highlight" id="[yourIDHere]">
     <div class="tabs-option"><i class="fas fa-cat"></i></div>
     <div class="tabs-option">Option 2</div>
@@ -270,7 +272,12 @@
     <div class="tabs-view"> Option 3</div>
     <div class="tabs-view"> Option 4</div>
 </div></pre><br>
-<i class="fab fa-js-square"></i>
+<i class="fab fa-js-square"></i><br>
+<pre>--ripple-color: rgba(0, 205, 150, 0.2)
+--ripple-size: 15
+--tabs-highlight : 100, 205, 150
+--tabs-rail-display : none</pre>
+
 </div>
 
 <br>
@@ -342,23 +349,175 @@ Note that while <code>--parallax-height</code> works with local scopes, <code>--
 
         <div id="Preloader" class="Page">
 
- <h1>PRELOADER</h1>
+ <h1>LOADER</h1>
  <h3>General Guide</h3> 
             <div class="windex">
-                Below is a basic instance of how you can set up a preloader component. The way to use them would be on JQuery <code> $(document).ready() </code>, call 
-                <code>$('.preloader').hide()</code> but I have not added that by default so you can create custom animations and such. 
+                Below is a basic instance of how you can set up a loader component. The way to use them as maybe a page preloader could be on JQuery <code> $(document).ready() </code>, call 
+                <code>$('.preloader').fadeOut()</code> but I have not added that by default so you can create custom animations and such.  There is a basic margin applied to space
+                the title and the actual loader, which can be customised. You can use an icon or logo in the title, or just text or even not include it altogether. Variables to change here are 
+               <code> --preloader-color </code> and <code> --preloader-bg </code>. Below are the three types
+                currently added. 
+                <br>
+                <br>
                <div class="preloader"> 
                    <div class="preloader-title"> 
                         <i class="fas fa-user-astronaut"></i>
                    </div>
                </div>
-               <div class="preloader"> 
-                    <div class="preloader-title"> 
-                        <span>WILDCARD</span> 
+               <br>
+               <div class="center">
+                   <pre><div class="preloader"> 
+    <div class="preloader-title"> 
+        [YourIcon]
+    </div>
+</div></pre><br>
+<i class="fab fa-js-square"></i>
+               </div>
+               <div class="preloader-circle xtra"> 
+                </div><br>
+                <div class="center">
+                <pre><div class="preloader-circle"></div></pre><br>
+     <i class="fab fa-js-square"></i>
+     <br>
+     <pre>--preloader-color: rgb(28, 88, 255)</pre>
                     </div>
-                </div>
+                <div class="preloader-content xtra-2"> 
+                        <div class="preloader-title"> 
+                                CHISAKI
+                           </div>
+                </div><br>
+                <div class="center">
+                <pre><div class="preloader-content"> 
+    <div class="preloader-title"> 
+        [YourTitle]
+    </div>
+</div></pre><br>
+     <i class="fab fa-js-square"></i>
+     <br>
+     <pre>--preloader-color: rgba(163, 163, 163, 0.5)
+--preloader-bg: rgba(66, 66, 66, 0.5)</pre>
+                    </div>
         </div>
         </div>
+<div id="GridTable" class="Page">
+    <h1>GRID TABLE</h1>
+    <h3>General Guide</h3> 
+    <div class="windex">
+        So I think we all can agree that HTML tables just ain't it, so now with glastnost you get additional front end functionality and styling!
+        The setup for a nasic table is just the same as a basic HTML table. 
+        I use CSS grids as displays for these tables to make sizing custom columns a lot easier. Simply change the <code>tr</code> for that table
+        with its property for <code> grid-template-columns</code>. Additionally, you have
+        <br><br>
+        <div class="center">
+        <table >
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4/20/1990</td>
+                    <td> - $69</td>
+                    <td>Ayo just copped these fresh</td>
+                </tr>
+                <tr>
+                    <td>4/20/1995</td>
+                    <td> - $21</td>
+                    <td>Filed taxes 💰💰</td>
+                </tr>
+                  <tr>
+                    <td>4/20/2000</td>
+                    <td> + $420</td>
+                    <td>Getting this bread 🏦🏦</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<h3>Indexing, Sorting and Styling</h3>
+<div class="windex">Thats right folks! you can have a sortable table! Just add <code>.col-sort</code> to any table's <code>th</code> and now 
+the frontend can sort a table by any column. I honestly don't know the performance implications of this but should be fine! Just make sure the columns you 
+add the class to have text/string based values, or dont (it makes for interesting results). Just click on the column's top cell!
+<br><br>
+Some more features below include custom column sizing and <code>.table-index</code> added to <code>table</code> tag to auto generate an index. Just keep in mind
+to adjust any custom column sizing accounting for a new index column at the start. Styling is from class <code>.table-simple</code> and custom class for columns.
+<br><br>
+
+
+<div class="center">
+        <table class="tbl table-index table-simple table-sort">
+            <thead>
+                <tr>
+                    <th class="col-sort">Date</th>
+                    <th class="col-sort">Amount</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4/20/1990</td>
+                    <td> 69</td>
+                    <td>Ayo just copped these fresh</td>
+                </tr>
+                <tr>
+                    <td>4/20/1985</td>
+                    <td> 21</td>
+                    <td>Filed taxes 💰💰</td>
+                </tr>
+                  <tr>
+                    <td>4/20/2000</td>
+                    <td>420</td>
+                    <td>Getting this bread 🏦🏦</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</div>
+<div id="Cards" class="Page">
+    <h1>CARDS</h1>
+    <h3>General Guide</h3> 
+    <div class="windex">
+        
+        Information cards are always cool right? These are pretty straight forward and only advanced features even use any JS.
+
+        <div class="card">
+            <div class="card-title">
+                Title
+            </div>
+            <div class="card-img">
+                <img src="https://i.pinimg.com/474x/ac/9b/d5/ac9bd5e85befadce7340d18bffc2d92a.jpg">
+            </div>
+            <div class="card-desc">
+                Description about totally cool card that everyone uses. So uh turtles are cool right?
+            </div>
+            <div class="card-footer">
+                Card's footer
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                Title
+            </div>
+            <div class="card-img">
+                <img src="https://data.whicdn.com/images/196686064/original.jpg">
+            </div>
+            <div class="card-desc">
+                Description about totally cool card that everyone uses. So uh turtles are cool right?
+            </div>
+            <div class="card-footer">
+                Card's footer
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
     <div class="Page" id="Components">
             <h1>COMPONENTS</h1>
             <h3>
@@ -368,9 +527,9 @@ Note that while <code>--parallax-height</code> works with local scopes, <code>--
                 <a href="#Buttons">Buttons</a>
                 <a href="#Tabs">Tabs</a>
                 <a href="#Parallax">Parallax</a>
-                <a href="#Preloader">Preloader</a>
-                <a href="#Buttons">Buttons</a>
-                <a href="#Buttons">Buttons</a>
+                <a href="#Preloader">Loader</a>
+                <a href="#GridTable">Grid Table</a>
+                <a href="#Cards">Cards</a>
                 <a href="#Buttons">Buttons</a>
                 <a href="#Buttons">Buttons</a>
                 <a href="#Buttons">Buttons</a>
